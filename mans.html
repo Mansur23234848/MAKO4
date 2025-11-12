@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAKO4 — Сапалы стиль | Заманауи киім</title>
+
+    <!-- ✅ SEO МЕТА ТЕГТЕР -->
+    <meta name="description" content="MAKO4 — заманауи отандық бренд. Сапалы стиль, минималистік дизайн және қолжетімді баға.">
+    <meta name="keywords" content="Mako4, киім, бренд, сән, Қазақстан, hoodie, fashion, streetwear">
+    <meta name="theme-color" content="#8A2BE2">
+
+    <!-- ✅ Favicon -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/892/892458.png" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- ====== ORIGINAL STYLE (unchanged) ====== -->
+    <style>
+        :root {
+            --brand-primary: #8A2BE2;
+            --brand-secondary: #FFD700;
+            --color-dark: #1f1f1f;
+            --color-light: #ffffff;
+            --color-background: #f8f8f8;
+            --font-main: 'Inter', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--color-dark);
+            background-color: var(--color-light);
+            line-height: 1.6;
+            transition: background-color 0.3s;
+        }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+        a { text-decoration: none; color: var(--color-dark); transition: color 0.3s; }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            border: 2px solid var(--brand-secondary);
+            border-radius: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--brand-secondary);
+            color: var(--color-dark);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--brand-secondary);
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* ✅ Header + гамбургер меню */
+        .header {
+            background: var(--color-light);
+            border-bottom: 1px solid #ededed;
+            padding: 16px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--brand-primary);
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav a:hover { color: var(--brand-primary); }
+
+        /* ✅ Гамбургер */
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--brand-primary);
+        }
+
+        @media (max-width: 900px) {
+            .nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background: var(--color-light);
+                width: 100%;
+                text-align: center;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            }
+            .nav.active {
+                display: block;
+            }
+            .nav ul {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--brand-primary);
+            color: var(--color-light);
+            padding: 120px 24px;
+            text-align: center;
+            background-image: url('https://via.placeholder.com/1280x600/8A2BE2/FFFFFF?text=MAKO4+NEW+COLLECTION+SLIDER');
+            background-size: cover;
+            background-position: center;
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+            animation: fadeInUp 1.2s ease-in-out;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .features {
+            background-color: var(--color-background);
+            padding: 60px 0;
+        }
+
+        .features .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .feature-item {
+            padding: 30px;
+            background: var(--color-light);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-item h3 {
+            color: var(--brand-primary);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .catalog-preview {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .catalog-preview h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--color-dark);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--color-light);
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 500px) {
+            .product-card img { height: 250px; }
+        }
+
+        .product-info { padding: 15px 20px; }
+
+        .product-info h3 {
+            font-size: 1.1rem;
+            margin: 5px 0;
+            font-weight: 600;
+        }
+
+        .product-info .price {
+            color: var(--brand-primary);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        /* ✅ Контакт формасы */
+        .contact-section {
+            background: var(--color-background);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: var(--font-main);
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .footer {
+            background: var(--color-dark);
+            color: var(--color-light);
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: var(--color-light);
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-links a:hover { 
+            color: var(--brand-secondary); 
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 550px) {
+            .footer .container {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .social-links a { margin: 0 10px; }
+        }
+
+        /* ✅ Form success эффект */
+        .success-message {
+            color: green;
+            font-weight: 600;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+
+    <!-- ====== ADDED STYLES (appended, does not modify original declarations) ====== -->
+    <style>
+        /* btn-secondary (was used in original markup but not defined) */
+        .btn-secondary {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: 2px solid var(--brand-primary);
+            background: transparent;
+            color: var(--brand-primary);
+            font-weight: 600;
+            text-transform: none;
+            cursor: pointer;
+            transition: all .25s;
+        }
+        .btn-secondary:hover { background: var(--brand-primary); color: #fff; transform: translateY(-3px); }
+
+        /* New Drop slider */
+        .new-drop {
+            padding: 40px 0;
+            background: linear-gradient(180deg, #fff 0%, #fbfbff 100%);
+        }
+        .slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        .slides {
+            display:flex;
+            transition: transform .6s cubic-bezier(.2,.8,.2,1);
+            width: 100%;
+        }
+        .slide {
+            min-width: 100%;
+            position: relative;
+            color: #fff;
+            padding: 60px 40px;
+            background-size: cover;
+            background-position: center;
+            display:flex;
+            align-items:center;
+            justify-content:flex-start;
+            gap: 30px;
+        }
+        .slide .info {
+            background: rgba(0,0,0,0.35);
+            padding: 20px;
+            border-radius:10px;
+            max-width: 520px;
+        }
+        .slide h3 { font-size: 2rem; margin-bottom: 8px; }
+        .slide p { opacity: .95; margin-bottom: 12px; }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            display:flex;
+            gap:8px;
+        }
+        .dot {
+            width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.6); cursor:pointer;
+        }
+        .dot.active { background: var(--brand-secondary); transform: scale(1.1); }
+
+        /* Testimonials */
+        .testimonials { padding: 50px 0; text-align:center; background: #fff; }
+        .testimonials .wrap { max-width: 980px; margin: 0 auto; }
+        .testi-grid { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; }
+        .testi { background: var(--color-background); padding:20px; border-radius:12px; width:320px; box-shadow:0 6px 18px rgba(0,0,0,0.04); }
+        .testi p { font-style:italic; margin-bottom:10px; }
+        .testi h4 { color:var(--brand-primary); }
+
+        /* Lookbook gallery */
+        .lookbook { padding:50px 0; background: linear-gradient(180deg,#fbfbff,#fff); }
+        .look-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap:12px; }
+        .look-card { position:relative; overflow:hidden; border-radius:10px; cursor:pointer; }
+        .look-card img { width:100%; height:220px; object-fit:cover; transition: transform .45s; }
+        .look-card:hover img { transform: scale(1.08); }
+        .look-card .label { position:absolute; left:10px; bottom:10px; background:rgba(0,0,0,0.55); color:#fff; padding:6px 10px; border-radius:6px; font-weight:600; }
+
+        /* Why MAKO4 */
+        .why { padding:50px 0; background: #fff; }
+        .why-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:20px; text-align:center; }
+        .why-card { background:var(--color-background); padding:25px; border-radius:10px; box-shadow:0 6px 20px rgba(0,0,0,0.04); }
+
+        /* Shop by category (compact) */
+        .shop-cats { padding:50px 0; }
+        .cats-grid { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; }
+        .cat-card { background:#fff; border-radius:10px; padding:18px; width:220px; text-align:center; box-shadow: 0 8px 24px rgba(0,0,0,0.05); cursor:pointer; transition: transform .25s; }
+        .cat-card:hover { transform: translateY(-6px); }
+
+        /* Blog preview */
+        .blog { padding:50px 0; background:var(--color-bg); }
+        .blogs { display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:18px; }
+
+        /* Subscribe */
+        .subscribe { padding:40px 0; background: linear-gradient(90deg, #fff9e6, #fff); display:flex; align-items:center; justify-content:center; }
+        .subscribe .box { max-width:820px; width:100%; background:#fff; padding:22px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.06); display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+        .subscribe input[type="email"] { padding:12px 14px; border:1px solid #ddd; border-radius:8px; flex:1; min-width:220px; }
+
+        /* Modal Quick View */
+        .modal { position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,0.5); z-index:9999; }
+        .modal.active { display:flex; }
+        .modal-card { background:#fff; width:90%; max-width:900px; border-radius:12px; overflow:hidden; display:flex; gap:20px; padding:20px; }
+        .modal-card img { width:50%; object-fit:cover; height:100%; border-radius:8px; }
+        .modal-info { padding:8px 0; width:50%; }
+        .close-btn { cursor:pointer; padding:8px 12px; border-radius:6px; border:1px solid #ddd; background:#fafafa; }
+
+        /* small helper */
+        .muted { color:#666; font-size:0.95rem; }
+        @media (max-width:800px) {
+            .modal-card { flex-direction:column; }
+            .modal-card img, .modal-info { width:100%; }
+            .slide { padding:30px 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====== ORIGINAL PAGE CONTENT (unchanged) ====== -->
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">MАКО4</a>
+
+                        <div class="menu-toggle">☰</div>
+
+            <nav class="nav">
+                <ul>
+                    <li><a href="#">Каталог</a></li>
+                    <li><a href="#">Біз туралы</a></li>
+                    <li><a href="#">Жаңалықтар</a></li>
+                    <li><a href="#contact">Байланыс</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-icons">
+                <a href="#">🛒 Себет</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Сапалы стиль — сенің қолыңда!</h1>
+            <p>MАКО4 брендінің соңғы коллекциясынан заманауи киімдерді таңдаңыз.</p>
+            <a href="#" class="btn btn-primary">Коллекцияны көру</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="feature-item">
+                <h3>Қазақстанда жасалған</h3>
+                <p>Отандық өндіріс пен сапалы тігіс.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Минималистік стиль</h3>
+                <p>Уақыттан тыс, трендтен шықпайтын дизайн.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Қолжетімді баға</h3>
+                <p>Сәнді киімдер барлығына қолжетімді.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="catalog-preview">
+        <div class="container">
+            <h2>🔥 Жаңа топтама</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://whstrade.ru/thumb/2/lFQcF2wdGVNhEIiyjh3N1w/r/d/cml_72313579_cb86fb1c_1.png" alt="Күлгін Худи">
+                    <div class="product-info">
+                        <h3>Унисекс Худи "VIOLET"</h3>
+                        <p class="price">11 111 ₸</p>
+                        <a href="#" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Толығырақ</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://avatars.mds.yandex.net/i?id=43d50ef6dd028219c4ad82f259fb4fc5_l-4055263-images-thumbs&n=13" alt="Сары футболка">
+                    <div class="product-info">
+                        <h3>Классикалық футболка</h3>
+                        <p class="price">5 555 ₸</p>
+                        <a href="#" class="btn btn-secondary">Толығырақ</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://i.pinimg.com/originals/16/22/d6/1622d687602c52b232b20d362a00fd5c.png" alt="Қара джинсы">
+                    <div class="product-info">
+                        <h3>Стильді қара джинсы</h3>
+                        <p class="price">8 888 ₸</p>
+                        <a href="#" class="btn btn-secondary">Толығырақ</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://image.hm.com/assets/hm/db/2a/db2a05f8a0873a42ee9c0b0f5ee088c99bd7daaf.jpg?imwidth=1260" alt="Шапка">
+                    <div class="product-info">
+                        <h3>Шапка</h3>
+                        <p class="price">3 333 ₸</p>
+                        <a href="#" class="btn btn-secondary">Толығырақ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== ADDED SECTIONS START (we only appended, original content above unchanged) ====== -->
+
+    <!-- New Drop slider (appended) -->
+    <section class="new-drop">
+        <div class="container">
+            <h2 style="text-align:center; color:var(--brand-primary); margin-bottom:22px;">New Drop — 2025</h2>
+
+            <div class="slider" id="mainSlider" aria-hidden="false">
+                <div class="slides">
+                    <div class="slide" style="background-image:url('https://via.placeholder.com/1280x500/8A2BE2/fff?text=VIOLET+HOODIE');">
+                        <div class="info">
+                            <h3>Унисекс Худи "VIOLET"</h3>
+                            <p>Жаңа түстер, жұмсақ матa — осы маусымның хиті.</p>
+                            <button class="btn-secondary quickview" data-name="Унисекс Худи VIOLET" data-price="11 111 ₸" data-img="https://whstrade.ru/thumb/2/lFQcF2wdGVNhEIiyjh3N1w/r/d/cml_72313579_cb86fb1c_1.png">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="slide" style="background-image:url('https://via.placeholder.com/1280x500/FFD700/fff?text=CLASSIC+TEE');">
+                        <div class="info">
+                            <h3>Классикалық футболка</h3>
+                            <p>Күнделікті стиль үшін ең ыңғайлы модель.</p>
+                            <button class="btn-secondary quickview" data-name="Классикалық футболка" data-price="5 555 ₸" data-img="https://avatars.mds.yandex.net/i?id=43d50ef6dd028219c4ad82f259fb4fc5_l-4055263-images-thumbs&n=13">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="slide" style="background-image:url('https://via.placeholder.com/1280x500/333333/fff?text=BLACK+JEANS');">
+                        <div class="info">
+                            <h3>Стильді қара джинсы</h3>
+                            <p>Қалыпты әрі ресми емес көрініс — қалаға және кешке.</p>
+                            <button class="btn-secondary quickview" data-name="Қара джинсы" data-price="8 888 ₸" data-img="https://i.pinimg.com/originals/16/22/d6/1622d687602c52b232b20d362a00fd5c.png">Quick View</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slider-controls" id="sliderDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="wrap container">
+            <h2 style="color:var(--brand-primary); margin-bottom:18px;">Клиент пікірлері</h2>
+            <div class="testi-grid" id="testiGrid">
+                <div class="testi">
+                    <p>"Худи матасы өте жұмсақ, түстері дәл суреттегідей — 10/10!"</p>
+                    <h4>— Бако, Алматы</h4>
+                </div>
+                <div class="testi">
+                    <p>"Тапсырысым тез келді, пакетте сыйлық та болды — рахмет!"</p>
+                    <h4>— Жанар, Талдықорған</h4>
+                </div>
+                <div class="testi">
+                    <p>"Қызмет сапасы ұнады, бағасы қолайлы және дизайн стильді."</p>
+                    <h4>— Руслан, Шымкент</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lookbook -->
+    <section class="lookbook">
+        <div class="container">
+            <h2 style="color:var(--brand-primary); margin-bottom:18px; text-align:center;">Lookbook</h2>
+            <div class="look-grid">
+                <div class="look-card"><img src="https://www.sleek-mag.com/wp-content/uploads/2023/10/20230922-Sleek-x-CK80170-1024x1280.jpg?v=1696410911" alt=""><div class="label">Street Style</div></div>
+                <div class="look-card"><img src="https://media.frgroup.kz/images/4c/29/d56c6d64749417ca0627bbc57cce.jpg" alt=""><div class="label">Minimal</div></div>
+                <div class="look-card"><img src="https://intertop.kz/load/mp312191/MAIN.jpeg" alt=""><div class="label">Sport</div></div>
+                <div class="look-card"><img src="https://a.lmcdn.ru/product/R/T/RTLAEH461501_28252563_1_v2_2x.jpg" alt=""><div class="label">Autumn</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why MAKO4 -->
+    <section class="why">
+        <div class="container">
+            <h2 style="color:var(--brand-primary); text-align:center; margin-bottom:20px;">Неге біз?</h2>
+            <div class="why-grid">
+                <div class="why-card">
+                    <h3>🤎 Отандық өндіріс</h3>
+                    <p class="muted">Қазақстанда тігіліп, жергілікті материалдардан жасалады.</p>
+                </div>
+                <div class="why-card">
+                    <h3>🧵 Сапалы материал</h3>
+                    <p class="muted">Төзімді маталар және сенімді тігіс — ұзақ киюге арналған.</p>
+                </div>
+                <div class="why-card">
+                    <h3>⚡ Жылдам жеткізу</h3>
+                    <p class="muted">Ел ішінде экспресс жеткізу опциялары.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop by Category -->
+    <section class="shop-cats">
+        <div class="container">
+            <h2 style="color:var(--brand-primary); text-align:center; margin-bottom:20px;">Shop by Category</h2>
+            <div class="cats-grid">
+                <div class="cat-card" data-cat="hoodie">Hoodies<br><span class="muted">Жылы және жайлы</span></div>
+                <div class="cat-card" data-cat="tshirt">T-shirts<br><span class="muted">Күнделікті комфорт</span></div>
+                <div class="cat-card" data-cat="pants">Pants<br><span class="muted">Қалпына келтіру</span></div>
+                <div class="cat-card" data-cat="access">Accessories<br><span class="muted">Бұйымдар мен керек-жарақтар</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog preview -->
+    <section class="blog">
+        <div class="container">
+            <h2 style="color:var(--brand-primary); text-align:center; margin-bottom:20px;">Жаңалықтар</h2>
+            <div class="blogs">
+                <article style="background:#fff; padding:18px; border-radius:10px; box-shadow:0 6px 20px rgba(0,0,0,0.04);">
+                    <h3>2025: Streetwear трендтері</h3>
+                    <p class="muted">Қысқа пікір — трендтер және MAKO4-тің жаңа бағыттары.</p>
+                </article>
+                <article style="background:#fff; padding:18px; border-radius:10px; box-shadow:0 6px 20px rgba(0,0,0,0.04);">
+                    <h3>MAKO4: материалдар мен экология</h3>
+                    <p class="muted">Біз экологиялық таза материалға басымдық береміз.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe -->
+    <section class="subscribe">
+        <div class="box container">
+            <div style="flex:1;">
+                <strong>Жаңадан жаңалықтар мен эксклюзивті ұсыныстарды бірінші білу үшін</strong>
+                <div class="muted">Email жазылып, 10% жеңілдік купонын алыңыз.</div>
+            </div>
+            <div style="display:flex; gap:10px; align-items:center;">
+                <input id="subscribeEmail" type="email" placeholder="Email" />
+                <button id="subscribeBtn" class="btn btn-primary">Subscribe</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Quick View (appended) -->
+    <div class="modal" id="quickModal" aria-hidden="true">
+        <div class="modal-card" role="dialog" aria-modal="true">
+            <div style="flex:1;">
+                <img id="modalImg" src="" alt="product image">
+            </div>
+            <div class="modal-info">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h3 id="modalTitle">Title</h3>
+                    <button class="close-btn" id="closeModal">Close</button>
+                </div>
+                <p id="modalPrice" style="color:var(--brand-primary); font-weight:700; margin:12px 0;">Price</p>
+                <p class="muted">Өнімнің қысқаша сипаттамасы. Қосымша опциялар: өлшем, түс, сан.</p>
+                <div style="margin-top:18px; display:flex; gap:10px;">
+                    <button class="btn btn-primary">Сатып алу</button>
+                    <button class="btn-secondary" id="shareBtn">Бөлісу</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====== ADDED SECTIONS END ====== -->
+
+    <!-- ====== ORIGINAL CONTACT & FOOTER (unchanged) ====== -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>📩 Бізбен байланыс</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Атыңыз" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Хабарламаңызды жазыңыз..." required></textarea>
+                <button type="submit" class="btn btn-primary">Жіберу</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 MAKO4. Барлық құқықтар қорғалған. | Қазақстанда жасалған</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/ma_k_o4/" target="_blank">Instagram</a>
+                <a href="https://t.me/+77028308284" target="_blank">Telegram</a>
+                <a href="https://wa.me/+77028308284" target="_blank">WhatsApp</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ====== ORIGINAL SCRIPTS (unchanged) + ADDED SCRIPTS appended ====== -->
+    <script>
+        // ORIGINAL hamburger behavior (unchanged)
+        const toggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('.nav');
+        if (toggle && nav) {
+            toggle.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+        }
+
+        // Original contact form success behavior (kept)
+        const form = document.querySelector('.contact-form');
+        if (form) {
+            const message = document.createElement('div');
+            message.classList.add('success-message');
+            message.textContent = '✅ Хабарлама сәтті жіберілді!';
+            form.appendChild(message);
+
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                message.style.display = 'block';
+                form.reset();
+                setTimeout(() => message.style.display = 'none', 3000);
+            });
+        }
+
+        /* ====== ADDED JAVASCRIPT (appended) ====== */
+
+        // 1) Slider logic (auto + dots + manual)
+        (function(){
+            const slidesEl = document.querySelector('.slides');
+            const slides = document.querySelectorAll('.slide');
+            const dotsContainer = document.getElementById('sliderDots');
+            if (!slidesEl || slides.length === 0 || !dotsContainer) return;
+
+            let idx = 0;
+            const total = slides.length;
+            // create dots
+            for (let i=0;i<total;i++){
+                const d = document.createElement('div');
+                d.className = 'dot' + (i===0 ? ' active' : '');
+                d.dataset.index = i;
+                dotsContainer.appendChild(d);
+                d.addEventListener('click', ()=> { gotoSlide(i); resetAuto(); });
+            }
+            function gotoSlide(i){
+                idx = i;
+                slidesEl.style.transform = `translateX(-${100 * idx}%)`;
+                [...dotsContainer.children].forEach((n,ii)=> n.classList.toggle('active', ii===idx));
+            }
+            let autoplay = setInterval(()=> { idx = (idx+1)%total; gotoSlide(idx); }, 4500);
+            function resetAuto(){ clearInterval(autoplay); autoplay = setInterval(()=> { idx = (idx+1)%total; gotoSlide(idx); }, 4500); }
+        })();
+
+        // 2) Quick View modal behavior for Quick View buttons (works with existing 'Толығырақ' if they have .quickview)
+        (function(){
+            const quickBtns = document.querySelectorAll('.quickview');
+            const modal = document.getElementById('quickModal');
+            const modalImg = document.getElementById('modalImg');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalPrice = document.getElementById('modalPrice');
+            const closeModal = document.getElementById('closeModal');
+
+            function openModal(name, price, img){
+                if (!modal) return;
+                modal.classList.add('active');
+                modal.setAttribute('aria-hidden','false');
+                modalImg.src = img;
+                modalTitle.textContent = name;
+                modalPrice.textContent = price;
+            }
+            function hideModal(){
+                if (!modal) return;
+                modal.classList.remove('active');
+                modal.setAttribute('aria-hidden','true');
+            }
+            quickBtns.forEach(b=>{
+                b.addEventListener('click', (e)=>{
+                    e.preventDefault();
+                    const name = b.dataset.name || b.closest('.product-card')?.querySelector('h3')?.textContent || 'Өнім';
+                    const price = b.dataset.price || b.closest('.product-card')?.querySelector('.price')?.textContent || '';
+                    const img = b.dataset.img || b.closest('.product-card')?.querySelector('img')?.src || '';
+                    openModal(name, price, img);
+                });
+            });
+            if (closeModal) closeModal.addEventListener('click', hideModal);
+            // click outside to close
+            modal && modal.addEventListener('click', (e)=> { if (e.target === modal) hideModal(); });
+        })();
+
+        // 3) Testimonials auto-rotate (simple)
+        (function(){
+            const testiGrid = document.getElementById('testiGrid');
+            if (!testiGrid) return;
+            const items = testiGrid.querySelectorAll('.testi');
+            let tIdx = 0;
+            function rotateTesti(){
+                items.forEach((it,i)=> it.style.opacity = (i===tIdx? '1':'0.45'));
+                tIdx = (tIdx+1)%items.length;
+            }
+            rotateTesti();
+            setInterval(rotateTesti, 3500);
+        })();
+
+        // 4) Lookbook click: open image in new tab (non-invasive)
+        (function(){
+            document.querySelectorAll('.look-card').forEach(card=>{
+                card.addEventListener('click', ()=> {
+                    const img = card.querySelector('img');
+                    if (img) window.open(img.src, '_blank');
+                });
+            });
+        })();
+
+        // 5) Shop by category cards: scroll to product list & filter (soft: highlight matching items)
+        (function(){
+            const cats = document.querySelectorAll('.cat-card');
+            cats.forEach(c=>{
+                c.addEventListener('click', ()=> {
+                    const key = c.dataset.cat?.toLowerCase();
+                    // find products by name and highlight (non-destructive)
+                    document.querySelectorAll('.product-card').forEach(pc=> pc.style.outline = 'none');
+                    if (!key) return;
+                    let matched = 0;
+                    document.querySelectorAll('.product-card').forEach(pc=>{
+                        const title = pc.querySelector('h3')?.textContent?.toLowerCase() || '';
+                        if (title.includes(key) || (key === 'access' && title.includes('шап') )) {
+                            pc.style.outline = `3px solid rgba(138,43,226,0.25)`;
+                            matched++;
+                        }
+                    });
+                    if (matched>0) {
+                        const first = document.querySelector('.product-card[style*="outline"]');
+                        first && first.scrollIntoView({behavior:'smooth', block:'center'});
+                    } else {
+                        // scroll to catalog if nothing matched
+                        document.querySelector('.catalog-preview')?.scrollIntoView({behavior:'smooth'});
+                    }
+                });
+            });
+        })();
+
+        // 6) Subscribe button (visual)
+        (function(){
+            const subBtn = document.getElementById('subscribeBtn');
+            const subInput = document.getElementById('subscribeEmail');
+            if (!subBtn || !subInput) return;
+            subBtn.addEventListener('click', ()=> {
+                const email = subInput.value.trim();
+                if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+                    alert('Тиісті Email енгізіңіз.');
+                    return;
+                }
+                subBtn.textContent = 'Жіберілуде...';
+                setTimeout(()=> {
+                    subBtn.textContent = 'Subscribe';
+                    subInput.value = '';
+                    alert('Сіз жазылдыңыз! Купон поштаңызға жіберілді.');
+                }, 900);
+            });
+        })();
+
+        // 7) Share button in modal – open share options (simplified)
+        (function(){
+            const shareBtn = document.getElementById('shareBtn');
+            if (!shareBtn) return;
+            shareBtn.addEventListener('click', ()=> {
+                const title = document.getElementById('modalTitle').textContent;
+                const url = location.href;
+                const telegram = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+                window.open(telegram, '_blank');
+            });
+        })();
+
+        // 8) small accessibility: trap focus in modal (basic)
+        (function(){
+            const modal = document.getElementById('quickModal');
+            if (!modal) return;
+            modal.addEventListener('keydown', (e)=>{
+                if (e.key === 'Escape') modal.classList.remove('active');
+            });
+        })();
+
+    </script>
+
+</body>
+</html>
