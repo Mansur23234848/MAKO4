@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+
+<html lang="kk" class="scroll-smooth">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Halyk Bank | 2020-2024 Стратегиялық Есеп</title>
+
+   
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+
+
+    <script>
+
+        // Halyk Green: #007C4F
+
+        // Halyk Accent Yellow: #F8B42C
+
+        tailwind.config = {
+
+            darkMode: 'class',
+
+            theme: {
+
+                extend: {
+
+                    fontFamily: {
+
+                        sans: ['Inter', 'sans-serif'],
+
+                    },
+
+                    colors: {
+
+                        halyk: {
+
+                            main: '#007C4F',
+
+                            dark: '#005939',
+
+                            light: '#E6F2ED',
+
+                            accent: '#F8B42C'
+
+                        },
+
+                        dark: {
+
+                            bg: '#0A0F1C',
+
+                            card: '#111827'
+
+                        }
+
+                    },
+
+                    animation: {
+
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    </script>
+
+
+
+    <style>
+
+        /* Preloader Style */
+
+        #preloader {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: #fff;
+
+            z-index: 9999;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            transition: opacity 0.6s ease;
+
+        }
+
+        .dark #preloader { background: #0A0F1C; }
+
+       
+
+        /* Custom Scrollbar */
+
+        ::-webkit-scrollbar { width: 8px; }
+
+        ::-webkit-scrollbar-track { background: transparent; }
+
+        ::-webkit-scrollbar-thumb { background: #007C4F; border-radius: 4px; }
+
+       
+
+        /* Glassmorphism */
+
+        .glass {
+
+            background: rgba(255, 255, 255, 0.7);
+
+            backdrop-filter: blur(20px);
+
+            -webkit-backdrop-filter: blur(20px);
+
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+
+        }
+
+        .dark .glass {
+
+            background: rgba(10, 15, 28, 0.8);
+
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+
+        }
+
+
+
+        /* Abstract Background Pattern - Subtle improvement for dark mode visibility */
+
+        .bg-pattern {
+
+            background-image: radial-gradient(#007C4F 0.5px, transparent 0.5px), radial-gradient(#007C4F 0.5px, transparent 0.5px);
+
+            background-size: 20px 20px;
+
+            background-position: 0 0, 10px 10px;
+
+            opacity: 0.05;
+
+        }
+
+        .dark .bg-pattern {
+
+             background-image: radial-gradient(#007C4F 0.5px, transparent 0.5px), radial-gradient(#007C4F 0.5px, transparent 0.5px);
+
+             opacity: 0.1; /* Make it slightly more visible in dark mode */
+
+        }
+
+
+
+        /* Gradient Text Improvement */
+
+        .gradient-text-strong {
+
+            background-clip: text;
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            background-image: linear-gradient(to right, #007C4F, #34D399);
+
+        }
+
+    </style>
+
+</head>
+
+<body class="bg-gray-50 dark:bg-dark-bg text-slate-900 dark:text-slate-100 transition-colors duration-300 overflow-x-hidden">
+
+
+
+    <div id="preloader">
+
+        <div class="flex flex-col items-center animate-pulse-slow">
+
+            <svg class="w-16 h-16 text-halyk-main" viewBox="0 0 50 50" fill="none" xmlns="https://finansovik.com/wp-content/uploads/2022/10/1200px-NBK_Logo.svg-1.png">
+
+                <rect width="50" height="50" rx="12" fill="currentColor"/>
+
+                <path d="M15 35V15H21V22H29V15H35V35H29V28H21V35H15Z" fill="white"/>
+
+            </svg>
+
+            <p class="mt-4 text-halyk-main font-bold text-lg tracking-widest">ЖҮКТЕЛУДЕ...</p>
+
+        </div>
+
+    </div>
+
+
+
+    <nav class="fixed w-full z-50 glass transition-all duration-300 shadow-md dark:shadow-none">
+
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+
+           
+
+            <div class="flex items-center gap-3 cursor-pointer" onclick="location.reload()">
+
+                <div class="relative">
+
+                     <svg class="w-10 h-10 text-halyk-main" viewBox="0 0 50 50" fill="none" xmlns="https://finansovik.com/wp-content/uploads/2022/10/1200px-NBK_Logo.svg-1.png">
+
+                        <rect width="50" height="50" rx="12" fill="#007C4F"/>
+
+                        <path d="M15 35V15H21V22H29V15H35V35H29V28H21V35H15Z" fill="white"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="leading-tight">
+
+                    <h1 class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Halyk Bank</h1>
+
+                    <p class="text-[10px] text-halyk-main font-bold uppercase tracking-widest">Strategic Report</p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="hidden lg:flex gap-8 text-sm font-medium">
+
+                <a href="#" class="text-slate-600 dark:text-slate-300 hover:text-halyk-main transition">Басты</a>
+
+                <a href="#report" class="text-slate-600 dark:text-slate-300 hover:text-halyk-main transition">Динамика</a>
+
+                <a href="#data" class="text-slate-600 dark:text-slate-300 hover:text-halyk-main transition">Деректер</a>
+
+                <a href="#" class="text-slate-600 dark:text-slate-300 hover:text-halyk-main transition">ESG</a>
+
+            </div>
+
+
+
+            <div class="flex items-center gap-6">
+
+                <div class="hidden md:flex items-center gap-2 px-4 py-1.5 bg-halyk-light dark:bg-halyk-main/10 rounded-full border border-halyk-main/20">
+
+                    <div class="w-2 h-2 rounded-full bg-halyk-main animate-pulse"></div>
+
+                    <span class="text-xs font-semibold text-halyk-dark dark:text-halyk-light">Verified by: Жанбырбай А. & Егибаева Ж.</span>
+
+                </div>
+
+
+
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition focus:outline-none">
+
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-yellow-400"></i>
+
+                    <i data-lucide="moon" class="w-5 h-5 dark:hidden text-slate-700"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+
+        <div class="absolute inset-0 bg-pattern"></div>
+
+       
+
+        <div class="absolute top-20 right-0 w-[500px] h-[500px] bg-halyk-main/10 rounded-full blur-[100px] animate-pulse-slow"></div>
+
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-halyk-accent/10 rounded-full blur-[80px]"></div>
+
+
+
+        <div class="container mx-auto px-6 relative z-10">
+
+            <div class="max-w-4xl mx-auto text-center">
+
+                <div data-aos="fade-down" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 shadow-sm mb-8">
+
+                    <span class="text-halyk-main font-black">TOP-1</span>
+
+                    <span class="text-sm text-slate-600 dark:text-slate-300">Қазақстандағы көшбасшы қаржы институты</span>
+
+                </div>
+
+               
+
+                <h1 data-aos="zoom-in" class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+
+                    5 Жылдық <span class="gradient-text-strong">Тұрақтылық</span> Пен Даму
+
+                </h1>
+
+               
+
+                <p data-aos="fade-up" data-aos-delay="100" class="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-2xl mx-auto">
+
+                    "Halyk Bank" АҚ-ның 2020-2024 жылдардағы қаржылық нәтижелері, капиталдандыру динамикасы және стратегиялық жетістіктерінің ресми шолуы.
+
+                </p>
+
+
+
+                <div data-aos="fade-up" data-aos-delay="200" class="flex flex-col sm:flex-row items-center justify-center gap-4">
+
+                    <a href="#report" class="px-8 py-4 bg-halyk-main hover:bg-halyk-dark text-white rounded-xl font-bold shadow-xl shadow-halyk-main/30 transition transform hover:-translate-y-1 flex items-center gap-2">
+
+                        Есепті Көру <i data-lucide="arrow-down" class="w-4 h-4"></i>
+
+                    </a>
+
+                   
+
+                    <div class="flex items-center gap-3 px-6 py-3 bg-white/50 dark:bg-white/5 backdrop-blur rounded-xl border border-gray-200 dark:border-white/10">
+
+                        <div class="flex -space-x-2">
+
+                            <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold ring-2 ring-white dark:ring-dark-bg">Ж</div>
+
+                            <div class="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center text-white text-xs font-bold ring-2 ring-white dark:ring-dark-bg">Е</div>
+
+                        </div>
+
+                        <div class="text-left">
+
+                            <p class="text-[10px] text-slate-400 uppercase font-bold">Дайындағандар</p>
+
+                            <p class="text-xs font-bold text-slate-800 dark:text-white">Ж. Абдулмансур, Е. Жанар</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <section class="py-12 relative z-20 -mt-10">
+
+        <div class="container mx-auto px-6">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <div data-aos="fade-up" data-aos-delay="0" class="bg-white dark:bg-dark-card p-8 rounded-3xl shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-gray-800 hover:border-halyk-main/50 transition duration-300 group">
+
+                    <div class="flex justify-between items-start mb-4">
+
+                        <div class="p-3 bg-halyk-light dark:bg-halyk-main/20 rounded-2xl text-halyk-main">
+
+                            <i data-lucide="banknote" class="w-6 h-6"></i>
+
+                        </div>
+
+                        <span class="text-xs font-bold px-3 py-1 bg-green-100 text-green-700 rounded-full">2024E</span>
+
+                    </div>
+
+                    <p class="text-slate-500 text-sm font-medium mb-1">Жалпы Активтер</p>
+
+                    <h3 class="text-3xl font-black text-slate-900 dark:text-white group-hover:text-halyk-main transition">
+
+                        <span class="counter" data-target="11.6">0.0</span> трлн ₸
+
+                    </h3>
+
+                </div>
+
+
+
+                <div data-aos="fade-up" data-aos-delay="100" class="bg-white dark:bg-dark-card p-8 rounded-3xl shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-gray-800 hover:border-blue-500/50 transition duration-300 group">
+
+                    <div class="flex justify-between items-start mb-4">
+
+                        <div class="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-2xl text-blue-600">
+
+                            <i data-lucide="trending-up" class="w-6 h-6"></i>
+
+                        </div>
+
+                        <span class="text-xs font-bold px-3 py-1 bg-blue-100 text-blue-700 rounded-full">+15% (YoY)</span>
+
+                    </div>
+
+                    <p class="text-slate-500 text-sm font-medium mb-1">Таза Пайда</p>
+
+                    <h3 class="text-3xl font-black text-slate-900 dark:text-white group-hover:text-blue-600 transition">
+
+                        <span class="counter" data-target="1.41">0.00</span> трлн ₸
+
+                    </h3>
+
+                </div>
+
+
+
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-white dark:bg-dark-card p-8 rounded-3xl shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-gray-800 hover:border-yellow-500/50 transition duration-300 group">
+
+                    <div class="flex justify-between items-start mb-4">
+
+                        <div class="p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-2xl text-yellow-600">
+
+                            <i data-lucide="coins" class="w-6 h-6"></i>
+
+                        </div>
+
+                        <span class="text-xs font-bold px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full">Рекордты</span>
+
+                    </div>
+
+                    <p class="text-slate-500 text-sm font-medium mb-1">Дивидендтер (2024)</p>
+
+                    <h3 class="text-3xl font-black text-slate-900 dark:text-white group-hover:text-yellow-500 transition">
+
+                        <span class="counter" data-target="710.0">0.0</span> млрд ₸
+
+                    </h3>
+
+                </div>
+
+
+
+                <div data-aos="fade-up" data-aos-delay="300" class="bg-white dark:bg-dark-card p-8 rounded-3xl shadow-xl shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-gray-800 hover:border-purple-500/50 transition duration-300 group">
+
+                    <div class="flex justify-between items-start mb-4">
+
+                        <div class="p-3 bg-purple-50 dark:bg-purple-900/20 rounded-2xl text-purple-600">
+
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+
+                        </div>
+
+                         <span class="text-xs font-bold px-3 py-1 bg-purple-100 text-purple-700 rounded-full">Мықты</span>
+
+                    </div>
+
+                    <p class="text-slate-500 text-sm font-medium mb-1">Меншікті Капитал</p>
+
+                    <h3 class="text-3xl font-black text-slate-900 dark:text-white group-hover:text-purple-600 transition">
+
+                        <span class="counter" data-target="1.9">0.0</span> трлн ₸
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section id="report" class="py-20 bg-white dark:bg-dark-bg border-t border-gray-100 dark:border-gray-800">
+
+        <div class="container mx-auto px-6">
+
+            <div class="flex items-end justify-between mb-10">
+
+                <div>
+
+                    <h2 class="text-4xl font-extrabold text-slate-900 dark:text-white">Қаржылық Динамика</h2>
+
+                    <p class="text-slate-500 mt-2">Активтер мен міндеттемелердің 5 жылдық салыстырмалы талдауы (трлн ₸)</p>
+
+                </div>
+
+                <div class="hidden md:block">
+
+                    <p class="text-sm font-medium text-slate-400">2020 - 2024 Жылдар</p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="grid lg:grid-cols-2 gap-8 mb-12">
+
+                <div data-aos="fade-right" class="bg-gray-50 dark:bg-dark-card p-6 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-lg">
+
+                    <canvas id="assetChart"></canvas>
+
+                </div>
+
+                <div data-aos="fade-left" class="bg-gray-50 dark:bg-dark-card p-6 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-lg">
+
+                    <canvas id="profitChart"></canvas>
+
+                </div>
+
+            </div>
+
+
+
+            <div data-aos="zoom-in-up" class="relative overflow-hidden rounded-3xl bg-[#004D31] text-white p-8 md:p-12 shadow-2xl">
+
+                <div class="absolute top-0 right-0 w-64 h-64 bg-[#F8B42C] opacity-10 rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
+
+               
+
+                <div class="grid md:grid-cols-2 gap-10 items-center relative z-10">
+
+                    <div>
+
+                        <div class="inline-block px-3 py-1 bg-white/10 rounded-lg text-xs font-bold mb-4">SHAREHOLDERS VALUE</div>
+
+                        <h3 class="text-4xl font-bold mb-4">Акционерлерге Рекордты Төлем</h3>
+
+                        <p class="text-gray-300 mb-8 leading-relaxed">
+
+                            Банк 2023-2024 жылдары тарихи дивидендтер төледі, бұл Halyk Bank-тің қаржылық денсаулығының мықты екендігін және инвесторларға деген адалдығын көрсетеді.
+
+                        </p>
+
+                        <div class="flex items-center gap-4">
+
+                            <div>
+
+                                <p class="text-xs text-gray-400 uppercase">2024 Жалпы Төлемі</p>
+
+                                <p class="text-3xl font-black text-[#F8B42C]">710 МЛРД ₸</p>
+
+                            </div>
+
+                            <div class="w-px h-12 bg-white/20"></div>
+
+                            <div>
+
+                                <p class="text-xs text-gray-400 uppercase">Жалпы (5 жыл)</p>
+
+                                <p class="text-3xl font-black">1050 МЛРД ₸</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="h-64">
+
+                        <canvas id="dividendChart"></canvas>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section id="data" class="py-20 bg-gray-50 dark:bg-[#0A0F1C]">
+
+        <div class="container mx-auto px-6">
+
+            <h3 class="text-3xl font-extrabold mb-6">Толық Қаржылық Деректер</h3>
+
+            <div class="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 shadow-2xl bg-white dark:bg-dark-card">
+
+                <div class="overflow-x-auto">
+
+                    <table class="w-full text-sm text-left">
+
+                        <thead class="bg-gray-100 dark:bg-gray-900/50 text-gray-600 dark:text-gray-400 text-xs uppercase">
+
+                            <tr>
+
+                                <th class="px-6 py-4 font-black">Көрсеткіш (миллион ₸)</th>
+
+                                <th class="px-6 py-4 text-right">2020</th>
+
+                                <th class="px-6 py-4 text-right">2021</th>
+
+                                <th class="px-6 py-4 text-right">2022</th>
+
+                                <th class="px-6 py-4 text-right">2023</th>
+
+                                <th class="px-6 py-4 text-right text-halyk-main font-black">2024</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+
+                            <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition">
+
+                                <td class="px-6 py-4 font-medium">Жалпы Активтер</td>
+
+                                <td class="px-6 py-4 text-right">10,945,263</td>
+
+                                <td class="px-6 py-4 text-right">13,030,733</td>
+
+                                <td class="px-6 py-4 text-right">14,548,198</td>
+
+                                <td class="px-6 py-4 text-right">16,421,217</td>
+
+                                <td class="px-6 py-4 text-right font-bold text-halyk-main">19,592,632</td>
+
+                            </tr>
+
+                            <tr class="hover:bg-gray-50 dark:hover:bg-white/5 transition">
+
+                                <td class="px-6 py-4 font-medium">Операциялық Кірістер</td>
+
+                                <td class="px-6 py-4 text-right">1,499,441</td>
+
+                                <td class="px-6 py-4 text-right">1,726,054</td>
+
+                                <td class="px-6 py-4 text-right">1,864,939</td>
+
+                                <td class="px-6 py-4 text-right">2,109,078</td>
+
+                                <td class="px-6 py-4 text-right font-bold text-halyk-main">2,312,612</td>
+
+                            </tr>
+
+                            <tr class="bg-halyk-light/50 dark:bg-halyk-main/10 font-semibold">
+
+                                <td class="px-6 py-4 text-halyk-main font-black">Таза Пайда</td>
+
+                                <td class="px-6 py-4 text-right">377,971</td>
+
+                                <td class="px-6 py-4 text-right">477,236</td>
+
+                                <td class="px-6 py-4 text-right text-red-500 font-bold">128,739</td>
+
+                                <td class="px-6 py-4 text-right">533,840</td>
+
+                                <td class="px-6 py-4 text-right font-bold text-halyk-main">612,427</td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <footer class="bg-white dark:bg-dark-card border-t border-gray-200 dark:border-gray-800 pt-16 pb-8">
+
+        <div class="container mx-auto px-6">
+
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+
+                <div>
+
+                    <div class="flex items-center gap-2 mb-4">
+
+                        <svg class="w-8 h-8 text-halyk-main" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                            <rect width="50" height="50" rx="12" fill="#007C4F"/>
+
+                            <path d="M15 35V15H21V22H29V15H35V35H29V28H21V35H15Z" fill="white"/>
+
+                        </svg>
+
+                        <span class="text-2xl font-bold tracking-tight">Halyk Bank</span>
+
+                    </div>
+
+                    <p class="text-slate-500 max-w-sm">Қазақстанның жетекші қаржы экожүйесі. <br>Тұрақты даму және сенімді серіктестік.</p>
+
+                </div>
+
+
+
+                <div class="flex flex-col items-end">
+
+                    <div class="bg-gray-50 dark:bg-gray-800 px-6 py-4 rounded-xl border border-gray-200 dark:border-gray-700">
+
+                        <p class="text-[10px] uppercase tracking-widest text-slate-400 mb-2 text-right">Жоба Авторлары</p>
+
+                        <div class="flex items-center gap-4">
+
+                            <div class="text-right">
+
+                                <p class="font-bold text-slate-900 dark:text-white">Жанбырбай Абдулмансур</p>
+
+                                <p class="text-xs text-halyk-main">Lead Analyst</p>
+
+                            </div>
+
+                            <div class="w-px h-8 bg-gray-300 dark:bg-gray-600"></div>
+
+                            <div class="text-right">
+
+                                <p class="font-bold text-slate-900 dark:text-white">Егибаева Жанар</p>
+
+                                <p class="text-xs text-halyk-main">Financial Expert</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+           
+
+            <div class="border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between text-sm text-slate-500">
+
+                <p>&copy; 2025 "Halyk Bank" АҚ. Барлық құқықтар қорғалған.</p>
+
+                <div class="flex gap-4 mt-4 md:mt-0">
+
+                    <a href="#" class="hover:text-halyk-main">Құпиялылық саясаты</a>
+
+                    <a href="#" class="hover:text-halyk-main">Лицензия №1.2.47/230/38/1</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+
+        // --- 1. Preloader Logic ---
+
+        window.addEventListener('load', () => {
+
+            const preloader = document.getElementById('preloader');
+
+            setTimeout(() => {
+
+                preloader.style.opacity = '0';
+
+                setTimeout(() => preloader.style.display = 'none', 600);
+
+            }, 1000); // Slightly reduced delay
+
+        });
+
+
+
+        // --- 2. Initialize Icons & AOS ---
+
+        lucide.createIcons();
+
+        AOS.init({ duration: 800, offset: 50, once: true });
+
+
+
+        // --- 3. Theme & Chart Logic ---
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        const htmlElement = document.documentElement;
+
+        let charts = [];
+
+
+
+        // Set initial theme based on system preference (Improved)
+
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+
+            htmlElement.classList.add('dark');
+
+        }
+
+
+
+        const getChartColors = () => {
+
+            const isDark = htmlElement.classList.contains('dark');
+
+            return {
+
+                text: isDark ? '#94a3b8' : '#475569',
+
+                grid: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)', // Grid line darker for contrast
+
+                halyk: '#007C4F',
+
+                accent: '#F8B42C'
+
+            };
+
+        };
+
+
+
+        function initCharts() {
+
+            const colors = getChartColors();
+
+            Chart.defaults.font.family = "'Inter', sans-serif";
+
+            Chart.defaults.color = colors.text;
+
+
+
+            // Chart 1: Assets & Capital (Bar)
+
+            const ctx1 = document.getElementById('assetChart').getContext('2d');
+
+            charts.push(new Chart(ctx1, {
+
+                type: 'bar',
+
+                data: {
+
+                    labels: ['2020', '2021', '2022', '2023', '2024'],
+
+                    datasets: [
+
+                        // Data adjusted to use the 'trln ₸' scale consistently with the data table change
+
+                        { label: 'Активтер (трлн)', data: [10.9, 13.0, 14.5, 16.4, 19.6], backgroundColor: colors.halyk, borderRadius: 6, barPercentage: 0.7 },
+
+                        { label: 'Капитал (трлн)', data: [1.3, 1.5, 1.7, 1.8, 1.9], backgroundColor: colors.accent, borderRadius: 6, barPercentage: 0.7 }
+
+                    ]
+
+                },
+
+                options: {
+
+                    responsive: true,
+
+                    plugins: { legend: { position: 'top', align: 'end' } },
+
+                    scales: {
+
+                        y: {
+
+                            grid: { color: colors.grid },
+
+                            ticks: { callback: v => v + ' трлн' }
+
+                        },
+
+                        x: { grid: { display: false } }
+
+                    }
+
+                }
+
+            }));
+
+
+
+            // Chart 2: Profit (Line)
+
+            const ctx2 = document.getElementById('profitChart').getContext('2d');
+
+            let gradient = ctx2.createLinearGradient(0, 0, 0, 400);
+
+            gradient.addColorStop(0, 'rgba(0, 124, 79, 0.4)'); // Stronger gradient
+
+            gradient.addColorStop(1, 'rgba(0, 124, 79, 0.05)');
+
+
+
+            charts.push(new Chart(ctx2, {
+
+                type: 'line',
+
+                data: {
+
+                    labels: ['2020', '2021', '2022', '2023', '2024'],
+
+                    // Data adjusted for "трлн ₸" scale for better visualization
+
+                    datasets: [{
+
+                        label: 'Таза Пайда (трлн)',
+
+                        data: [0.37, 0.47, 0.12, 0.53, 0.61],
+
+                        borderColor: colors.halyk,
+
+                        backgroundColor: gradient,
+
+                        fill: true,
+
+                        tension: 0.4,
+
+                        borderWidth: 3,
+
+                        pointRadius: 5,
+
+                        pointBackgroundColor: 'white',
+
+                        pointHoverRadius: 7
+
+                    }]
+
+                },
+
+                options: {
+
+                    responsive: true,
+
+                    plugins: { legend: { display: false } },
+
+                    scales: {
+
+                        y: {
+
+                            grid: { color: colors.grid },
+
+                            ticks: { callback: v => v.toFixed(2) + ' трлн' }
+
+                        },
+
+                        x: { grid: { display: false } }
+
+                    }
+
+                }
+
+            }));
+
+
+
+            // Chart 3: Dividend (Footer)
+
+            const ctx3 = document.getElementById('dividendChart').getContext('2d');
+
+            charts.push(new Chart(ctx3, {
+
+                type: 'bar',
+
+                data: {
+
+                    labels: ['2020', '2021', '2022', '2023', '2024'],
+
+                    datasets: [{
+
+                        label: 'Дивидендтер (млрд ₸)',
+
+                        data: [130, 110, 0, 600, 710], // Data adjusted to be in billions
+
+                        backgroundColor: 'rgba(255,255,255,0.7)',
+
+                        hoverBackgroundColor: '#F8B42C',
+
+                        borderRadius: 6
+
+                    }]
+
+                },
+
+                options: {
+
+                    responsive: true,
+
+                    maintainAspectRatio: false,
+
+                    plugins: { legend: { display: false } },
+
+                    scales: {
+
+                        x: {
+
+                            ticks: { color: 'rgba(255,255,255,0.7)' },
+
+                            grid: { display: false }
+
+                        },
+
+                        y: { display: false }
+
+                    }
+
+                }
+
+            }));
+
+        }
+
+
+
+        // Function to update chart colors on theme toggle
+
+        function updateChartsTheme() {
+
+            const colors = getChartColors();
+
+            Chart.defaults.color = colors.text;
+
+
+
+            charts.forEach(chart => {
+
+                // Update scale colors
+
+                chart.options.scales.y.grid.color = colors.grid;
+
+                chart.options.scales.y.ticks.color = colors.text;
+
+                if(chart.options.scales.x.ticks) chart.options.scales.x.ticks.color = colors.text;
+
+
+
+                // Update Profit chart gradient
+
+                if (chart.canvas.id === 'profitChart') {
+
+                    let gradient = chart.ctx.createLinearGradient(0, 0, 0, 400);
+
+                    gradient.addColorStop(0, 'rgba(0, 124, 79, 0.4)');
+
+                    gradient.addColorStop(1, 'rgba(0, 124, 79, 0.05)');
+
+                    chart.data.datasets[0].backgroundColor = gradient;
+
+                }
+
+               
+
+                chart.update();
+
+            });
+
+        }
+
+
+
+        // Start Charts
+
+        initCharts();
+
+
+
+        // Toggle Theme Logic
+
+        themeToggleBtn.addEventListener('click', () => {
+
+            htmlElement.classList.toggle('dark');
+
+            updateChartsTheme();
+
+        });
+
+
+
+        // --- 4. Counter Animation (Improved with Intersection Observer) ---
+
+        const counters = document.querySelectorAll('.counter');
+
+        const speed = 200;
+
+
+
+        const observer = new IntersectionObserver(entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    const counter = entry.target;
+
+                    const target = +counter.getAttribute('data-target');
+
+                   
+
+                    const updateCount = () => {
+
+                        let currentCount = parseFloat(counter.innerText);
+
+                        // Convert target to its display scale (e.g., 1.41)
+
+                        const inc = target / speed;
+
+
+
+                        if (currentCount < target) {
+
+                            counter.innerText = (currentCount + inc).toFixed(counter.innerText.includes('.') ? 2 : 1);
+
+                            setTimeout(updateCount, 15);
+
+                        } else {
+
+                            counter.innerText = target;
+
+                        }
+
+                    };
+
+                    updateCount();
+
+                    // Stop observing once counted
+
+                    observer.unobserve(counter);
+
+                }
+
+            });
+
+        }, {
+
+            threshold: 0.5 // Start counting when 50% of the element is visible
+
+        });
+
+
+
+        counters.forEach(counter => {
+
+            observer.observe(counter);
+
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>
