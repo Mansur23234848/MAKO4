@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Halyk Global Markets - 5 Жылдық Шолу</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+   
+   <style>
+       body {
+           font-family: 'Inter', sans-serif;
+           scroll-behavior: smooth;
+       }
+       /* Корпоративті түстерді анықтау */
+       .halyk-green { color: #00A14B; }
+       .bg-halyk-green { background-color: #00A14B; }
+       .halyk-deep-blue { color: #003366; }
+       .bg-halyk-deep-blue { background-color: #003366; }
+       
+       /* Слайд стилі */
+       .slide {
+           min-height: 100vh;
+           padding: 4rem 2rem;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: center;
+           border-bottom: 1px solid #e2e8f0;
+       }
+       .dark .slide { border-bottom-color: #374151; }
+       
+       /* Анимация */
+       .fade-in { animation: fadeIn 1s ease-in-out; }
+       @keyframes fadeIn {
+           from { opacity: 0; transform: translateY(20px); }
+           to { opacity: 1; transform: translateY(0); }
+       }
+   </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-200 transition-colors duration-300">
+
+   <nav class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md">
+       <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+           <div class="text-xl font-bold halyk-green">
+               Halyk Global Markets
+           </div>
+           <div class="hidden lg:flex space-x-4 text-sm font-medium">
+               <a href="#slide-1" class="hover:text-halyk-green transition">Басты бет</a>
+               <a href="#slide-4" class="hover:text-halyk-green transition">Көрсеткіштер</a>
+               <a href="#slide-5" class="hover:text-halyk-green transition">Активтер</a>
+               <a href="#slide-6" class="hover:text-halyk-green transition">Нәтижелер</a>
+               <a href="#slide-7" class="hover:text-halyk-green transition">NPV & IRR</a> <a href="#slide-8" class="hover:text-halyk-green transition">Дивидендтер</a>
+               <a href="#slide-9" class="hover:text-halyk-green transition">Қорытынды</a>
+           </div>
+       </div>
+   </nav>
+
+   <section id="slide-1" class="slide bg-halyk-deep-blue text-white text-center fade-in">
+       <div class="max-w-4xl">
+           <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-pulse">"Halyk Global Markets" АҚ</h1>
+           <h2 class="text-2xl md:text-3xl font-light mb-6">5 ЖЫЛДЫҚ ҚАРЖЫЛЫҚ ШОЛУ</h2>
+           <p class="text-lg md:text-xl text-gray-300 mb-8">(2020-2024)</p>
+           <p class="text-sm text-gray-400">Ұсынылған қаржылық есептілік негізінде дайындалған</p>
+       </div>
+   </section>
+
+   <section id="slide-2" class="slide bg-white dark:bg-gray-800 fade-in">
+       <div class="container mx-auto max-w-5xl text-center">
+           <h2 class="text-3xl font-bold mb-12 halyk-green">Компания туралы қысқаша мәлімет</h2>
+           <div class="grid md:grid-cols-2 gap-8 text-left">
+               <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-xl shadow-lg transition-transform transform hover:scale-105">
+                   <h3 class="text-xl font-bold halyk-deep-blue dark:text-gray-100 mb-4">Құрылуы және Иелік</h3>
+                   <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                       <li>1997 жылдан бастап қызмет етеді.</li>
+                       <li>2020 ж. "Казкоммерц Секьюритиз" АҚ атауы өзгертілді.</li>
+                       <li>"Қазақстан Халық Банкі" АҚ-ның 100% еншілес ұйымы.</li>
+                   </ul>
+               </div>
+               <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-xl shadow-lg transition-transform transform hover:scale-105">
+                   <h3 class="text-xl font-bold halyk-deep-blue dark:text-gray-100 mb-4">Негізгі қызметі</h3>
+                   <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                       <li>Брокерлік және дилерлік операциялар.</li>
+                       <li>ҚР Қаржы нарығын реттеу агенттігінің лицензиясы.</li>
+                       <li>Инвестициялық портфельді басқару.</li>
+                   </ul>
+               </div>
+           </div>
+       </div>
+   </section>
+
+   <section id="slide-3" class="slide bg-gray-200 dark:bg-gray-900 fade-in">
+       <div class="container mx-auto max-w-5xl text-center">
+           <h2 class="text-3xl font-bold mb-12 halyk-green">Тәуелсіз Аудитордың Қорытындысы</h2>
+           <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-2xl mb-8">
+               <blockquote class="text-lg md:text-xl italic text-gray-700 dark:text-gray-300 border-l-4 border-halyk-green pl-6">
+                   "Қаржылық есептілік компанияның жағдайын барлық елеулі аспектілерде <span class="font-bold text-halyk-green">анық көрсетеді</span>."
+               </blockquote>
+           </div>
+           <div class="inline-block bg-white dark:bg-gray-700 px-8 py-4 rounded-xl shadow-lg">
+               <span class="text-gray-500 dark:text-gray-400 block text-sm uppercase tracking-wide">Аудитор</span>
+               <span class="text-2xl font-bold halyk-deep-blue dark:text-gray-100">"Делойт" ЖШС (Deloitte)</span>
+           </div>
+       </div>
+   </section>
+
+   <section id="slide-4" class="slide bg-white dark:bg-gray-800 fade-in">
+       <div class="container mx-auto max-w-6xl text-center">
+           <h2 class="text-3xl font-bold mb-6 halyk-green">5 Жылдық Негізгі Көрсеткіштер</h2>
+           <p class="text-sm text-gray-500 mb-6">(мың теңге)</p>
+           <div class="shadow-2xl rounded-xl overflow-hidden overflow-x-auto">
+               <table class="w-full text-sm md:text-base text-left text-gray-700 dark:text-gray-300">
+                   <thead class="text-xs text-gray-800 dark:text-gray-100 uppercase bg-gray-200 dark:bg-gray-700">
+                       <tr>
+                           <th class="py-4 px-6">Көрсеткіш</th>
+                           <th class="py-4 px-6 text-right">2020</th>
+                           <th class="py-4 px-6 text-right">2021</th>
+                           <th class="py-4 px-6 text-right">2022</th>
+                           <th class="py-4 px-6 text-right">2023</th>
+                           <th class="py-4 px-6 text-right">2024</th>
+                       </tr>
+                   </thead>
+                   <tbody class="bg-white dark:bg-gray-800">
+                       <tr class="border-b dark:border-gray-700"><td class="py-4 px-6">Жалпы Активтер</td><td class="text-right">20,945,263</td><td class="text-right">28,030,733</td><td class="text-right">20,548,198</td><td class="text-right">17,421,217</td><td class="text-right">11,592,632</td></tr>
+                       <tr class="border-b dark:border-gray-700"><td class="py-4 px-6">Меншікті Капитал</td><td class="text-right">19,048,159</td><td class="text-right">20,914,165</td><td class="text-right">20,530,515</td><td class="text-right">17,243,631</td><td class="text-right">11,571,531</td></tr>
+                       <tr class="bg-gray-100 dark:bg-gray-900 font-bold"><td class="py-4 px-6">Таза Пайда</td><td class="text-right text-green-600">1,877,971</td><td class="text-right text-green-600">2,977,236</td><td class="text-right text-red-600">(239,739)</td><td class="text-right text-green-600">2,633,840</td><td class="text-right text-green-600">1,412,427</td></tr>
+                   </tbody>
+               </table>
+           </div>
+       </div>
+   </section>
+
+   <section id="slide-5" class="slide bg-gray-200 dark:bg-gray-900 fade-in">
+       <div class="container mx-auto max-w-5xl">
+           <h2 class="text-3xl font-bold text-center mb-8 halyk-green">Қаржылық Жағдай Динамикасы</h2>
+           <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-2xl mb-8">
+               <canvas id="financialPositionChart"></canvas>
+           </div>
+           <p class="text-center text-gray-700 dark:text-gray-300">
+               2021 жылы активтер шарықтау шегіне жетті (28 млрд ₸). 2024 жылы компания активтерді оңтайландырып, 11.6 млрд ₸ деңгейінде тұрақтанды.
+           </p>
+       </div>
+   </section>
+
+   <section id="slide-6" class="slide bg-white dark:bg-gray-800 fade-in">
+       <div class="container mx-auto max-w-5xl">
+           <h2 class="text-3xl font-bold text-center mb-8 halyk-green">Қызмет Нәтижелері</h2>
+           <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-2xl mb-8">
+               <canvas id="performanceChart"></canvas>
+           </div>
+           <p class="text-center text-gray-700 dark:text-gray-300">
+               Компания 2022 жылғы нарықтық қиындықтардан кейін 2023-2024 жылдары қайтадан жоғары табыстылыққа қол жеткізді.
+           </p>
+       </div>
+   </section>
+
+   <section id="slide-7" class="slide bg-gray-200 dark:bg-gray-900 fade-in">
+       <div class="container mx-auto max-w-6xl">
+           <h2 class="text-3xl font-bold text-center mb-4 halyk-green">Инвестициялық Тиімділік Көрсеткіштері</h2>
+           <p class="text-center text-gray-600 dark:text-gray-400 mb-10 max-w-3xl mx-auto">
+               Жобаларды және инвестициялық шешімдерді бағалау кезінде қолданылатын екі негізгі қаржылық құрал.
+           </p>
+
+           <div class="grid md:grid-cols-2 gap-8">
+               <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border-t-4 border-halyk-green transform transition hover:-translate-y-2">
+                   <div class="flex items-center justify-between mb-6">
+                       <h3 class="text-2xl font-bold halyk-deep-blue dark:text-white">NPV</h3>
+                       <span class="text-xs font-semibold bg-green-100 text-green-800 px-3 py-1 rounded-full">Net Present Value</span>
+                   </div>
+                   
+                   <h4 class="text-lg font-semibold mb-2 dark:text-gray-200">Таза Келтірілген Құн</h4>
+                   <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm leading-relaxed">
+                       Болашақ ақша ағындарының (кірістер мен шығыстардың) дисконтталған (бүгінгі) құны мен бастапқы инвестиция сомасының айырмасы.
+                   </p>
+
+                   <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg mb-6 text-center">
+                       <p class="font-mono text-lg text-gray-800 dark:text-gray-200">
+                           $$NPV = \sum \frac{CF_t}{(1+r)^t} - I_0$$
+                       </p>
+                       <p class="text-xs text-gray-500 mt-2">мұндағы \(r\) - дисконт мөлшерлемесі, \(I_0\) - бастапқы инвестиция.</p>
+                   </div>
+
+                   <ul class="space-y-3">
+                       <li class="flex items-start">
+                           <svg class="w-5 h-5 text-green-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                           <span class="text-sm dark:text-gray-300"><strong>NPV > 0:</strong> Жоба тиімді, инвестиция құнды арттырады.</span>
+                       </li>
+                       <li class="flex items-start">
+                           <svg class="w-5 h-5 text-red-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                           <span class="text-sm dark:text-gray-300"><strong>NPV < 0:</strong> Жоба тиімсіз, ақша жоғалту қаупі бар.</span>
+                       </li>
+                   </ul>
+               </div>
+
+               <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border-t-4 border-blue-600 transform transition hover:-translate-y-2">
+                   <div class="flex items-center justify-between mb-6">
+                       <h3 class="text-2xl font-bold halyk-deep-blue dark:text-white">IRR</h3>
+                       <span class="text-xs font-semibold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Internal Rate of Return</span>
+                   </div>
+                   
+                   <h4 class="text-lg font-semibold mb-2 dark:text-gray-200">Ішкі Кірістілік Нормасы</h4>
+                   <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm leading-relaxed">
+                       Бұл инвестицияның таза келтірілген құнын (NPV) нөлге теңестіретін дисконттық мөлшерлеме (пайыз). Инвестицияның максималды тиімділік пайызын көрсетеді.
+                   </p>
+
+                   <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg mb-6 text-center">
+                       <p class="font-mono text-lg text-gray-800 dark:text-gray-200">
+                           $$NPV(IRR) = 0$$
+                       </p>
+                       <p class="text-xs text-gray-500 mt-2">IRR - бұл теңдеуді қанағаттандыратын мөлшерлеме.</p>
+                   </div>
+
+                   <ul class="space-y-3">
+                       <li class="flex items-start">
+                           <svg class="w-5 h-5 text-blue-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                           <span class="text-sm dark:text-gray-300"><strong>Ереже:</strong> Егер IRR > Капитал құны (Cost of Capital) болса, жоба қабылданады.</span>
+                       </li>
+                       <li class="flex items-start">
+                           <svg class="w-5 h-5 text-gray-500 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                           <span class="text-sm dark:text-gray-300"><strong>Салыстыру:</strong> Әртүрлі жобаларды салыстыру үшін өте қолайлы көрсеткіш.</span>
+                       </li>
+                   </ul>
+               </div>
+           </div>
+       </div>
+   </section>
+
+   <section id="slide-8" class="slide bg-white dark:bg-gray-800 fade-in">
+       <div class="container mx-auto max-w-5xl">
+           <h2 class="text-3xl font-bold text-center mb-8 halyk-green">Дивидендтік Төлемдер</h2>
+           <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-2xl mb-8">
+               <canvas id="dividendChart"></canvas>
+           </div>
+           
+           <div class="text-center bg-halyk-green text-white p-6 rounded-xl shadow-lg max-w-md mx-auto mb-8">
+               <h4 class="text-lg font-semibold text-gray-200">5 ЖЫЛ ІШІНДЕ ТӨЛЕНДІ:</h4>
+               <p class="text-4xl font-bold">15,5 МЛРД ₸</p>
+           </div>
+       </div>
+   </section>
+
+   <section id="slide-9" class="slide bg-gray-100 dark:bg-gray-700 fade-in">
+       <div class="container mx-auto max-w-6xl text-center">
+           <h2 class="text-3xl font-bold mb-12 halyk-green">5 Жылдық Жалпы Қорытынды</h2>
+           <div class="grid md:grid-cols-3 gap-8">
+               <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+                   <h3 class="text-xl font-bold mb-3 halyk-deep-blue dark:text-gray-100">Тұрақтылық</h3>
+                   <p class="text-gray-600 dark:text-gray-400">Міндеттемелердің төмендеуі компанияның қаржылық жағдайын нығайтты.</p>
+               </div>
+               <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+                   <h3 class="text-xl font-bold mb-3 halyk-deep-blue dark:text-gray-100">Тиімділік</h3>
+                   <p class="text-gray-600 dark:text-gray-400">Нарықтық құбылмалылыққа қарамастан, компания жоғары пайда көрсетті.</p>
+               </div>
+               <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+                   <h3 class="text-xl font-bold mb-3 halyk-deep-blue dark:text-gray-100">Құндылық</h3>
+                   <p class="text-gray-600 dark:text-gray-400">Акционерге (Halyk Bank) 15.5 млрд теңге дивиденд төленді.</p>
+               </div>
+           </div>
+       </div>
+   </section>
+
+   <section id="slide-10" class="slide bg-halyk-deep-blue text-white text-center fade-in">
+       <h1 class="text-4xl md:text-5xl font-bold mb-6">Назарларыңызға рахмет!</h1>
+   </section>
+
+   <script>
+       // --- Chart.js ---
+       function getChartTextColor() {
+           return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? '#e5e7eb' : '#374151';
+       }
+       const chartTextColor = getChartTextColor();
+       Chart.defaults.font.family = "'Inter', sans-serif";
+       Chart.defaults.color = chartTextColor;
+       
+       // График 1
+       new Chart(document.getElementById('financialPositionChart').getContext('2d'), {
+           type: 'bar',
+           data: {
+               labels: ['2020', '2021', '2022', '2023', '2024'],
+               datasets: [
+                   { label: 'Жалпы Активтер', data: [20945263, 28030733, 20548198, 17421217, 11592632], backgroundColor: '#003366' },
+                   { label: 'Меншікті Капитал', data: [19048159, 20914165, 20530515, 17243631, 11571531], backgroundColor: '#00A14B' }
+               ]
+           },
+           options: { responsive: true, scales: { y: { beginAtZero: true } } }
+       });
+
+       // График 2
+       new Chart(document.getElementById('performanceChart').getContext('2d'), {
+           type: 'line',
+           data: {
+               labels: ['2020', '2021', '2022', '2023', '2024'],
+               datasets: [
+                   { label: 'Операциялық Кірістер', data: [1499441, 3726054, 564939, 3109078, 1512612], borderColor: '#003366', fill: false },
+                   { label: 'Таза Пайда', data: [1877971, 2977236, -239739, 2633840, 1412427], borderColor: '#00A14B', fill: false }
+               ]
+           },
+           options: { responsive: true }
+       });
+
+       // График 3
+       new Chart(document.getElementById('dividendChart').getContext('2d'), {
+           type: 'bar',
+           data: {
+               labels: ['2020', '2021', '2022', '2023', '2024'],
+               datasets: [{ label: 'Дивидендтер', data: [1299635, 1127037, 0, 6000014, 7100056], backgroundColor: '#00A14B' }]
+           },
+           options: { responsive: true, plugins: { legend: { display: false } } }
+       });
+   </script>
+</body>
+</html>
