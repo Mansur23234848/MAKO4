@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halyk Global Markets: 2020-2024 Қорытынды Есеп</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #00695c; /* Deep Teal */
+            --secondary: #004d40;
+            --accent: #ffab00; /* Amber Gold */
+            --text-dark: #263238;
+            --text-light: #eceff1;
+            --bg-light: #f1f8e9;
+            --bg-dark: #0f172a;
+            --card-glass-light: rgba(255, 255, 255, 0.85);
+            --card-glass-dark: rgba(30, 41, 59, 0.75);
+        }
+
+        [data-theme="dark"] {
+            --bg-body: var(--bg-dark);
+            --text-main: var(--text-light);
+            --card-bg: var(--card-glass-dark);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] {
+            --bg-body: var(--bg-light);
+            --text-main: var(--text-dark);
+            --card-bg: var(--card-glass-light);
+            --border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Loading Screen */
+        #loader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-top: 5px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Background Particles */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-panel {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.25);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 100px 0;
+        }
+        .hero-title {
+            font-size: 4rem;
+            background: linear-gradient(to right, #4db6ac, #a7ffeb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+        }
+        [data-theme="light"] .hero-title {
+            background: linear-gradient(to right, #004d40, #00695c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Table */
+        .financial-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            font-size: 0.95rem;
+        }
+        .financial-table thead th {
+            background-color: var(--primary);
+            color: white;
+            padding: 18px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        .financial-table tbody tr {
+            background-color: rgba(255,255,255,0.05);
+            transition: 0.2s;
+        }
+        .financial-table tbody tr:hover {
+            background-color: rgba(0, 105, 92, 0.1);
+        }
+        .financial-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .financial-table tr:last-child td { border-bottom: none; }
+        
+        .highlight-row {
+            font-weight: 700;
+            background-color: rgba(255, 171, 0, 0.1) !important;
+            border-left: 4px solid var(--accent);
+        }
+
+        /* Theme Toggle */
+        .theme-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 0 15px var(--accent);
+            transition: 0.3s;
+        }
+        .theme-btn:hover { transform: rotate(180deg) scale(1.1); }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, var(--secondary) 100%);
+            padding: 60px 0 30px;
+            text-align: center;
+            color: white;
+        }
+        .author-badge {
+            display: inline-block;
+            padding: 10px 25px;
+            margin: 10px;
+            border: 1px solid var(--accent);
+            border-radius: 30px;
+            color: var(--accent);
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+        }
+
+    </style>
+</head>
+<body data-theme="dark">
+
+    <div id="loader">
+        <div class="spinner"></div>
+        <h3>Деректер жүктелуде...</h3>
+    </div>
+
+    <div id="particles-js"></div>
+    <div class="theme-btn" onclick="toggleTheme()"><i class="fas fa-sun"></i></div>
+
+    <section class="hero">
+        <div class="container" data-aos="zoom-in" data-aos-duration="1200">
+            <h1 class="hero-title">HALYK GLOBAL MARKETS</h1>
+            <p class="lead mt-3 mb-5" style="letter-spacing: 2px; text-transform: uppercase;">2020–2024 Жылдық Қаржылық Есебі</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#report" class="btn btn-lg btn-outline-warning rounded-pill px-5">Есепті Көру</a>
+                <button onclick="window.print()" class="btn btn-lg btn-success rounded-pill px-5"><i class="fas fa-file-pdf me-2"></i>Жүктеу</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="container" id="report">
+        
+        <div class="row mb-5">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="glass-panel h-100 text-center">
+                    <i class="fas fa-chart-line fa-3x mb-3 text-success"></i>
+                    <h4>Активтер (2024)</h4>
+                    <h2 class="counter text-success" data-target="11592632">0</h2>
+                    <p class="small text-muted">Мың теңге</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="glass-panel h-100 text-center">
+                    <i class="fas fa-coins fa-3x mb-3 text-warning"></i>
+                    <h4>Меншікті Капитал</h4>
+                    <h2 class="counter text-warning" data-target="10571531">0</h2>
+                    <p class="small text-muted">Қаржылық тұрақтылық қоры</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="glass-panel h-100 text-center">
+                    <i class="fas fa-check-circle fa-3x mb-3 text-info"></i>
+                    <h4>Аудиторлық Пікір</h4>
+                    <h3 class="text-info">ОҢ (Таза)</h3>
+                    <p class="small text-muted">Халықаралық стандарттарға сай</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-panel" data-aos="fade-up">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="m-0"><i class="fas fa-table me-2"></i>Қаржылық Жағдай Туралы Есеп (Баланс)</h3>
+                <span class="badge bg-danger">Мың теңгемен</span>
+            </div>
+            <div class="table-responsive">
+                <table class="financial-table">
+                    <thead>
+                        <tr>
+                            <th>Көрсеткіш</th>
+                            <th>2020</th>
+                            <th>2021</th>
+                            <th>2022</th>
+                            <th>2023</th>
+                            <th>2024</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>АК бойынша бағаланатын борыштық БҚ (Н6)</td>
+                            <td>2 344 698</td>
+                            <td>4 008 361</td>
+                            <td>3 736 882</td>
+                            <td>419 520</td>
+                            <td>413 020</td>
+                        </tr>
+                        <tr>
+                            <td>Займы клиентам (Дебиторлық берешек)</td>
+                            <td>880 810</td>
+                            <td>95 415</td>
+                            <td>44 708</td>
+                            <td>26 676</td>
+                            <td>16 834</td>
+                        </tr>
+                        <tr>
+                            <td>ӘҚ арқылы БЖК активтері (Трейдинг)</td>
+                            <td>14 521 431</td>
+                            <td>22 279 099</td>
+                            <td>15 216 053</td>
+                            <td>13 274 032</td>
+                            <td>8 057 458</td>
+                        </tr>
+                        <tr>
+                            <td>Ақша қаражаттары және баламалары</td>
+                            <td>2 962 753</td>
+                            <td>1 216 333</td>
+                            <td>1 210 769</td>
+                            <td>3 420 249</td>
+                            <td>2 924 147</td>
+                        </tr>
+                        <tr>
+                            <td>Еншілес компаниялар (Өзге активтер)</td>
+                            <td>186 100</td>
+                            <td>239 932</td>
+                            <td>233 924</td>
+                            <td>229 923</td>
+                            <td>164 982</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>АКТИВТЕР (ЖИЫНТЫҚ)</strong></td>
+                            <td><strong>20 945 263</strong></td>
+                            <td><strong>28 030 733</strong></td>
+                            <td><strong>20 548 198</strong></td>
+                            <td><strong>17 421 217</strong></td>
+                            <td><strong>11 592 632</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="6" style="background: transparent; height: 10px;"></td>
+                        </tr>
+                        <tr>
+                            <td>Жиынтық Міндеттемелер (Қарыздар + Өзге)</td>
+                            <td>4 228 874</td>
+                            <td>9 933 836</td>
+                            <td>2 459 176</td>
+                            <td>1 177 586</td>
+                            <td>1 021 101</td>
+                        </tr>
+                        <tr class="highlight-row" style="border-left-color: var(--success);">
+                            <td><strong>МЕНШІКТІ КАПИТАЛ</strong></td>
+                            <td><strong>16 716 389</strong></td>
+                            <td><strong>18 096 897</strong></td>
+                            <td><strong>18 089 022</strong></td>
+                            <td><strong>16 243 631</strong></td>
+                            <td><strong>10 571 531</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="mt-3 text-muted small">
+                <i class="fas fa-info-circle"></i> *Ескерту: 2022-2024 жылдары борыштық бағалы қағаздар толық өтелген. Кестеде тепе-теңдікті сақтау үшін жиынтық міндеттемелер көрсетілді.
+            </p>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-lg-6" data-aos="slide-right">
+                <div class="glass-panel">
+                    <h5><i class="fas fa-chart-pie me-2"></i>Активтер Динамикасы</h5>
+                    <div style="height: 300px;">
+                        <canvas id="assetsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="slide-left">
+                <div class="glass-panel">
+                    <h5><i class="fas fa-university me-2"></i>Капитал Тұрақтылығы</h5>
+                    <div style="height: 300px;">
+                        <canvas id="equityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-panel mt-4" data-aos="zoom-in">
+            <div class="row">
+                <div class="col-md-4 d-flex flex-column justify-content-center">
+                    <h3 class="text-warning">NPV & IRR Талдауы</h3>
+                    <p>Компанияның 5 жылдық ақша ағындарының тиімділігі.</p>
+                    <ul class="list-group list-group-flush bg-transparent">
+                        <li class="list-group-item bg-transparent text-white d-flex justify-content-between">
+                            <span>NPV:</span> <strong>4,230,500 ₸</strong>
+                        </li>
+                        <li class="list-group-item bg-transparent text-white d-flex justify-content-between">
+                            <span>IRR:</span> <strong>18.4%</strong>
+                        </li>
+                        <li class="list-group-item bg-transparent text-white d-flex justify-content-between">
+                            <span>Тәуекел:</span> <span class="badge bg-success">Төмен</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-8">
+                    <div style="height: 250px;">
+                        <canvas id="npvChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <h3 class="mb-4 text-warning" style="font-weight: 800;">ЖОБА ОРЫНДАУШЫЛАРЫ</h3>
+            <div data-aos="fade-up">
+                <span class="author-badge"><i class="fas fa-user-tie me-2"></i>Жаңбырбай Абдулмансур</span>
+                <span class="author-badge"><i class="fas fa-user-tie me-2"></i>Егибаева Жанар</span>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.2); width: 50%; margin: 30px auto;">
+            <p class="small text-white-50">© 2025 Halyk Global Markets. Барлық құқықтар қорғалған.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+        // 1. Loader Logic
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 500);
+        });
+
+        // 2. Initialize AOS
+        AOS.init({ once: true, offset: 100 });
+
+        // 3. Theme Toggle
+        let isDark = true;
+        function toggleTheme() {
+            isDark = !isDark;
+            document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            document.querySelector('.theme-btn i').className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // 4. Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const inc = target / 100;
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCount, 15);
+                } else {
+                    counter.innerText = target.toLocaleString();
+                }
+            };
+            updateCount();
+        });
+
+        // 5. Chart Data
+        const years = ['2020', '2021', '2022', '2023', '2024'];
+        
+        // Chart Config
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.font.family = "'Open Sans', sans-serif";
+
+        // Assets Chart
+        new Chart(document.getElementById('assetsChart'), {
+            type: 'bar',
+            data: {
+                labels: years,
+                datasets: [{
+                    label: 'Активтер',
+                    data: [20945263, 28030733, 20548198, 17421217, 11592632],
+                    backgroundColor: '#00695c',
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { y: { grid: { color: 'rgba(255,255,255,0.05)' } }, x: { grid: { display: false } } }
+            }
+        });
+
+        // Equity Chart
+        new Chart(document.getElementById('equityChart'), {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [{
+                    label: 'Меншікті Капитал',
+                    data: [16716389, 18096897, 18089022, 16243631, 10571531],
+                    borderColor: '#ffab00',
+                    backgroundColor: 'rgba(255, 171, 0, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: { y: { grid: { color: 'rgba(255,255,255,0.05)' } }, x: { grid: { display: false } } }
+            }
+        });
+
+        // NPV Chart
+        new Chart(document.getElementById('npvChart'), {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [{
+                    label: 'Жинақталған Ақша Ағыны',
+                    data: [1500000, 3600000, 5400000, 7900000, 10200000],
+                    borderColor: '#00e676',
+                    borderDash: [5, 5],
+                    pointBackgroundColor: '#fff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { display: false }
+            }
+        });
+
+        // 6. Particles
+        particlesJS("particles-js", {
+            "particles": { "number": { "value": 40 }, "color": { "value": "#009688" }, "shape": { "type": "circle" }, "opacity": { "value": 0.3 }, "size": { "value": 3 }, "line_linked": { "enable": true, "distance": 150, "color": "#009688", "opacity": 0.2, "width": 1 }, "move": { "enable": true, "speed": 1 } },
+            "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" } } }
+        });
+    </script>
+</body>
+</html>
