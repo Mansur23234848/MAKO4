@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QAZAQ CYBER WEAR | Кибер-Дүкен</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        /* --- НЕГІЗГІ ПАРАМЕТРЛЕР --- */
+        :root {
+            --neon-cyan: #00F5FF; /* Қазақстан туына ұқсас ашық көк */
+            --neon-gold: #FFD700; /* Алтын түстес оюлар үшін */
+            --bg-color: #050505;
+            --glass-bg: rgba(0, 245, 255, 0.05);
+            --border-color: rgba(0, 245, 255, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--neon-cyan);
+            font-family: 'Share Tech Mono', monospace;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- МАТРИЦА ФОНЫ --- */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        /* --- UI ЭЛЕМЕНТТЕРІ --- */
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--neon-gold);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .oyu-icon {
+            width: 30px;
+            height: 30px;
+            fill: var(--neon-gold);
+            animation: pulse 2s infinite;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a:hover {
+            color: var(--neon-gold);
+            text-shadow: 0 0 5px var(--neon-gold);
+        }
+
+        .cart-btn {
+            border: 1px solid var(--neon-cyan);
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+        
+        .cart-btn:hover {
+            background: var(--neon-cyan);
+            color: black;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .glitch-wrapper {
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            position: relative;
+            color: var(--neon-cyan);
+        }
+
+        .hero h1::before, .hero h1::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+        }
+
+        .hero h1::before {
+            left: 2px;
+            text-shadow: -1px 0 red;
+            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        }
+
+        .hero h1::after {
+            left: -2px;
+            text-shadow: -1px 0 blue;
+            animation: glitch-anim-2 3s infinite linear alternate-reverse;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            border-left: 3px solid var(--neon-gold);
+            padding-left: 15px;
+            color: #fff;
+        }
+
+        .btn-main {
+            margin-top: 40px;
+            padding: 15px 40px;
+            background: transparent;
+            border: 2px solid var(--neon-gold);
+            color: var(--neon-gold);
+            font-size: 1.2rem;
+            font-family: inherit;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .btn-main:hover {
+            background: var(--neon-gold);
+            color: #000;
+            box-shadow: 0 0 20px var(--neon-gold);
+        }
+
+        /* --- PRODUCTS --- */
+        .products {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #fff;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--neon-cyan);
+            margin-top: 10px;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            position: relative;
+            transition: 0.3s;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-gold);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+
+        /* Бұрыштағы ою элементтері */
+        .corner-ornament {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-top: 2px solid var(--neon-cyan);
+            border-left: 2px solid var(--neon-cyan);
+            top: 0;
+            left: 0;
+            transition: 0.3s;
+        }
+
+        .card:hover .corner-ornament {
+            border-color: var(--neon-gold);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 300px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .product-img img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.2);
+            transition: 0.3s;
+        }
+
+        .card:hover .product-img img {
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            color: var(--neon-gold);
+            margin: 10px 0;
+        }
+
+        .btn-buy {
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            font-family: inherit;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-buy:hover {
+            background: var(--neon-cyan);
+            color: #000;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .hacker-text {
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        /* --- АНИМАЦИЯЛАР --- */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        @keyframes glitch-anim-1 {
+            0% { clip: rect(20px, 9999px, 15px, 0); }
+            20% { clip: rect(60px, 9999px, 70px, 0); }
+            40% { clip: rect(20px, 9999px, 50px, 0); }
+            60% { clip: rect(10px, 9999px, 80px, 0); }
+            80% { clip: rect(50px, 9999px, 30px, 0); }
+            100% { clip: rect(70px, 9999px, 90px, 0); }
+        }
+
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(15px, 9999px, 70px, 0); }
+            20% { clip: rect(80px, 9999px, 20px, 0); }
+            40% { clip: rect(30px, 9999px, 10px, 0); }
+            60% { clip: rect(50px, 9999px, 60px, 0); }
+            80% { clip: rect(10px, 9999px, 40px, 0); }
+            100% { clip: rect(90px, 9999px, 10px, 0); }
+        }
+
+        /* --- МОБИЛЬДІ НҰСҚА --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { display: none; } /* Қарапайым болу үшін мобильді мәзірді жасырдым, батырма қосуға болады */
+            .logo { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="matrixCanvas"></canvas>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <svg class="oyu-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0zm0 464c-114.7 0-208-93.3-208-208S141.3 48 256 48s208 93.3 208 208-93.3 208-208 208zm-40-208c0-22.1 17.9-40 40-40s40 17.9 40 40-17.9 40-40 40-40-17.9-40-40z"/>
+                   <path d="M256 120c-15 0-28 8-35 20-5 9-15 12-25 8-20-8-45 5-48 28-2 15 8 28 22 34 10 4 15 15 10 25-5 11-20 30-20 45 0 20 15 35 35 35 15 0 30-15 45-20 10-5 20 0 25 10 5 15 18 25 35 25s28-8 35-20c5-9 15-12 25-8 20 8 45-5 48-28 2-15-8-28-22-34-10-4-15-15-10-25 5-11 20-30 20-45 0-20-15-35-35-35-15 0-30 15-45 20-10 5-20 0-25-10-5-15-18-25-35-25z"/>
+                </svg>
+                QAZAQ_CYBER
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">ТОПТАМАЛАР</a></li>
+                    <li><a href="#">БІЗ ТУРАЛЫ</a></li>
+                    <li><a href="#">БАЙЛАНЫС</a></li>
+                </ul>
+            </nav>
+            <div class="cart-btn" onclick="openCart()">СЕБЕТ [0]</div>
+        </header>
+
+        <section class="hero">
+            <div class="glitch-wrapper">
+                <h1 data-text="MAKO4">MAKO4</h1>
+            </div>
+            <p>// ТАРИХ ПЕН ТЕХНОЛОГИЯНЫҢ БІРІГУІ</p>
+            <button class="btn-main">КАТАЛОГТЫ ЖҮКТЕУ</button>
+        </section>
+
+        <section class="products">
+            <div class="section-title">ЖАҢА ТОПТАМА</div>
+            <div class="grid">
+                <div class="card">
+                    <div class="corner-ornament"></div>
+                    <div class="product-img">
+                         <img src="https://avatars.mds.yandex.net/i?id=b386721957b5792d89544eae8c9af48602ab7f59-12514352-images-thumbs&n=13" alt="Cyber Shapan">
+                    </div>
+                    <h3 class="product-title">КИБЕР-ШАПАН v2.0</h3>
+                    <p class="product-price">45 000 ₸</p>
+                    <button class="btn-buy" onclick="addToCart('Кибер-Шапан v2.0')">СЕБЕТКЕ САЛУ_></button>
+                </div>
+
+                <div class="card">
+                    <div class="corner-ornament"></div>
+                    <div class="product-img">
+                        <img src="https://zatolux.kz/upload/iblock/890/rp097iyw58cymtzw4sfomshrev48spcs.jpg" alt="Neo Taqiya">
+                    </div>
+                    <h3 class="product-title">NEO ТАҚИЯ</h3>
+                    <p class="product-price">12 000 ₸</p>
+                    <button class="btn-buy" onclick="addToCart('Neo Тақия')">СЕБЕТКЕ САЛУ_></button>
+                </div>
+
+                <div class="card">
+                    <div class="corner-ornament"></div>
+                    <div class="product-img">
+                        <img src="https://resources.cdn-kaspi.kz/img/m/p/p63/pdb/70173492.jpeg?format=gallery-large" alt="T-Shirt">
+                    </div>
+                    <h3 class="product-title">T-SHIRT "KOSHPENDI"</h3>
+                    <p class="product-price">18 000 ₸</p>
+                    <button class="btn-buy" onclick="addToCart('T-Shirt Koshpendi')">СЕБЕТКЕ САЛУ_></button>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="logo" style="justify-content: center; margin-bottom: 20px;">
+                <svg class="oyu-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" style="width:20px; height:20px;">
+                    <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0zm0 464c-114.7 0-208-93.3-208-208S141.3 48 256 48s208 93.3 208 208-93.3 208-208 208zm-40-208c0-22.1 17.9-40 40-40s40 17.9 40 40-17.9 40-40 40-40-17.9-40-40z"/>
+                 </svg>
+                 QAZAQ_CYBER
+            </div>
+            <p class="hacker-text">© 2024 SYSTEM SECURE. MADE IN KAZAKHSTAN.</p>
+            <p class="hacker-text">ENCRYPTED CONNECTION ESTABLISHED...</p>
+        </footer>
+    </div>
+
+    <script>
+        // --- МАТРИЦА ЭФФЕКТІСІ (КӨК ТҮСТІ) ---
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヂギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789XYQAZAQ';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        const alphabet = katakana + latin + nums;
+
+        const fontSize = 16;
+        const columns = canvas.width/fontSize;
+
+        const rainDrops = [];
+
+        for( let x = 0; x < columns; x++ ) {
+            rainDrops[x] = 1;
+        }
+
+        const draw = () => {
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00F5FF'; // Қазақстан туы түсі (Neon Cyan)
+            ctx.font = fontSize + 'px monospace';
+
+            for(let i = 0; i < rainDrops.length; i++)
+            {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i*fontSize, rainDrops[i]*fontSize);
+
+                if(rainDrops[i]*fontSize > canvas.height && Math.random() > 0.975){
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+
+        setInterval(draw, 30);
+
+        // Терезе өлшемі өзгергенде canvas-ты жаңарту
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // --- ДҮКЕН ФУНКЦИОНАЛЫ ---
+        function addToCart(productName) {
+            // Жай ғана визуалды эффект
+            alert('SYSTEM MESSAGE: [' + productName + '] сәтті қосылды!');
+            
+            const btn = event.target;
+            const originalText = btn.innerText;
+            
+            btn.innerText = "ҚОСЫЛДЫ_✓";
+            btn.style.background = "#FFD700";
+            btn.style.color = "#000";
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.style.background = "transparent";
+                btn.style.color = "#00F5FF";
+            }, 2000);
+        }
+
+        function openCart() {
+            alert("ЖҮЙЕГЕ КІРУ... СЕБЕТ ӘЗІРГЕ БОС.");
+        }
+    </script>
+</body>
+</html>
